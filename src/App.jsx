@@ -1,14 +1,11 @@
-
-const tasks = [
-  {name: "Estudiar react", completed: false},
-  {name: "Estudiar typescript", completed: false},
-  {name: "Leer un libro", completed: false},
-]
+import { Header } from "./components/Header/Header"
+import { Main } from "./components/Main/Main"
 
 function App(props) {
   return (
     <>
-        <p className='text-red-500'>Hola</p>
+      <Header />
+      <Main />
     </>
   )
 }

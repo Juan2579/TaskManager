@@ -12,7 +12,7 @@ const tasks = [
 
 export const Main = () => {
   return (
-    <main className="bg-gray-100">
+    <main className="w-full flex flex-col items-center py-8  bg-gradient-to-r from-[#74ebd5] to-[#acb6e5]">
         <TodoCounter/>   
         <TodoSearch/>    
         <TodoList>

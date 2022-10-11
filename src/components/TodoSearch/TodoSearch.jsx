@@ -1,7 +1,7 @@
 export const TodoSearch = () => {
   return (
-    <section>
-        <input type="text" placeholder="cebolla" />
+    <section className="pb-5">
+        <input className="w-56 h-10 pl-4 outline-none rounded-2xl shadow-lg" type="text" placeholder="Search task..." />
     </section>
   )
 }

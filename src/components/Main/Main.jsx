@@ -31,6 +31,28 @@ export const Main = () => {
     })
   }
 
+  const completeTask = (name) => {
+    const taskIndex = tasks.findIndex(task => task.name == name)
+
+    const newTasks = [...tasks]
+    
+    if(newTasks[taskIndex].completed === false){
+      newTasks[taskIndex].completed = true
+    }else{
+      newTasks[taskIndex].completed = false
+    }
+
+    setTasks(newTasks)
+  }
+  const deleteTask = (name) => {
+    const taskIndex = tasks.findIndex(task => task.name == name)
+
+    const newTasks = [...tasks]
+    newTasks.splice(taskIndex, 1)
+
+    setTasks(newTasks)
+  }
+
 
   return (
     <main className="w-full h-screen flex flex-col items-center py-8  bg-gradient-to-r from-[#74ebd5] to-[#acb6e5]">
@@ -45,7 +67,13 @@ export const Main = () => {
         />    
         <TodoList>
             {searchedTasks.map(task => {
-                return <TodoItem key={task.name} name={task.name} completed={task.completed}   />
+                return <TodoItem 
+                key={task.name} 
+                name={task.name} 
+                completed={task.completed}
+                onComplete={() => completeTask(task.name)}
+                onDelete={() => deleteTask(task.name)}
+                />
             })}
         </TodoList>
         <CreateTodoButton />

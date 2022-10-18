@@ -44,6 +44,13 @@ export const App = () => {
     })
   }
 
+  const saveTasks = (newTasks) => {
+    const stringifiedTasks = JSON.stringify(newTasks)
+    localStorage.setItem("TASKS_V1", stringifiedTasks)
+    setTasks(newTasks)
+  }
+
+
   const completeTask = (name) => {
     const taskIndex = tasks.findIndex(task => task.name == name)
 
@@ -55,7 +62,7 @@ export const App = () => {
       newTasks[taskIndex].completed = false
     }
 
-    setTasks(newTasks)
+    saveTasks(newTasks)
   }
   const deleteTask = (name) => {
     const taskIndex = tasks.findIndex(task => task.name == name)
@@ -63,7 +70,7 @@ export const App = () => {
     const newTasks = [...tasks]
     newTasks.splice(taskIndex, 1)
 
-    setTasks(newTasks)
+    saveTasks(newTasks)
   }
 
 

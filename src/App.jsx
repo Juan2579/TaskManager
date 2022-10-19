@@ -1,32 +1,15 @@
 import { useState } from "react"
+import { useLocalStorage } from "./hooks/useLocalStorage"
 import { CreateTodoButton } from "./components/CreateTodoButton/CreateTodoButton"
 import { TodoCounter } from "./components/TodoCounter/TodoCounter"
 import { TodoItem } from "./components/TodoItem/TodoItem"
 import { TodoList } from "./components/TodoList/TodoList"
 import { TodoSearch } from "./components/TodoSearch/TodoSearch"
 
-const defaultTasks = [
-    {name: "Estudiar react", completed: false},
-    {name: "Estudiar typescript", completed: false},
-    {name: "Leer un libro", completed: false},
-    {name: "Asistir a charla", completed: false},
-  ]
 
 export const App = () => {
 
-  const localStorageTasks = localStorage.getItem("TASKS_V1")
-  let parsedTasks
-
-  if(!localStorageTasks) {
-    localStorage.setItem("TASKS_V1", JSON.stringify([]))
-    parsedTasks = []
-  }else{
-    parsedTasks = JSON.parse(localStorageTasks)
-  }
-
-
-
-  const [tasks, setTasks] = useState(parsedTasks)
+  const [tasks, saveTasks] = useLocalStorage("TASKS_V1", [])
   const [searchValue, setSearchValue] = useState("")
   
   const completedTasks = tasks.filter(todo => todo.completed).length
@@ -43,13 +26,6 @@ export const App = () => {
       return taskText.includes(searchText)
     })
   }
-
-  const saveTasks = (newTasks) => {
-    const stringifiedTasks = JSON.stringify(newTasks)
-    localStorage.setItem("TASKS_V1", stringifiedTasks)
-    setTasks(newTasks)
-  }
-
 
   const completeTask = (name) => {
     const taskIndex = tasks.findIndex(task => task.name == name)

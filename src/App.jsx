@@ -73,6 +73,19 @@ export const App = () => {
     saveTasks(newTasks)
   }
 
+  const addTask = (taskName) => {
+
+    if(!tasks.some(task => {
+      const storageTaskComparation = task.name.toLowerCase()
+      const newTaskComparison = taskName.toLowerCase()
+      return storageTaskComparation === newTaskComparison
+    })){
+      const newTasks = [...tasks]
+      newTasks.push({name: taskName, completed: false})
+      saveTasks(newTasks)
+    }
+
+  }
 
   return (
     <main className="w-full h-screen flex flex-col items-center py-8  bg-gradient-to-r from-[#74ebd5] to-[#acb6e5]">
@@ -96,7 +109,9 @@ export const App = () => {
                 />
             })}
         </TodoList>
-        <CreateTodoButton/>
+        <CreateTodoButton
+          addTask={(taskName) => addTask(taskName)}
+        />
     </main>
   )
 }

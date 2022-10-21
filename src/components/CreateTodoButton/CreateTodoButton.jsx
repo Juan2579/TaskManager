@@ -1,16 +1,12 @@
 export const CreateTodoButton = ({setOpenModal, openModal}) => {
   const createTask = (event) => {
+    event.stopPropagation()
 
     if(!openModal){
       setOpenModal(true)
     }else{
       setOpenModal(false)
     }
-
-    event.stopPropagation()
-    // modal.style = `
-    // box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%); 
-    // backdrop-filter: blur( 30.5px );`
 }
   return (
     <button type="button" className="w-16 bg-teal-100 rounded-full fixed bottom-5 right-5 shadow-lg z-10"

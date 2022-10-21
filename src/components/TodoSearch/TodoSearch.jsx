@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TaskContext } from "../../todoContext";
 
-export const TodoSearch = ({searchValue, setSearchValue}) => {
+export const TodoSearch = () => {
 
+  const {searchValue, setSearchValue} = useContext(TaskContext)
   const onSearchValueChange = (event) => {
     console.log(event.target.value);
     setSearchValue(event.target.value)

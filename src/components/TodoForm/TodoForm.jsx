@@ -21,7 +21,7 @@ export const TodoForm = ({addTask, setOpenModal}) => {
         <form
             onSubmit={onSubmit} 
             style={{boxShadow: "0 8px 32px 0 rgb(31 38 135 / 37%"}} 
-            className="min-w-[288px] min-h-[400px] flex flex-col items-center gap-5 fixed px-5 py-8 shadow-xl rounded-lg bg-[#90D2DD] border-2 border-white z-10 backdrop-blur-lg lg:min-w-[500px] lg:gap-12 lg:py-12">
+            className="min-w-[288px] min-h-[400px] flex flex-col items-center gap-5 fixed px-5 py-8 shadow-xl rounded-lg bg-[#90D2DD] border-2 border-white z-10 backdrop-blur-sm lg:min-w-[500px] lg:gap-12 lg:py-12">
             <h2 
                 className="text-transparent bg-clip-text text-2xl font-bold bg-gradient-to-r from-[#27566c] to-[#676bc3] lg:text-4xl">
                 Create a New Task!

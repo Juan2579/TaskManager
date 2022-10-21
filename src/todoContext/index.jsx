@@ -10,7 +10,9 @@ export const TaskProvider = (props) => {
         loading,
         error
     } = useLocalStorage("TASKS_V1", [])
+
     const [searchValue, setSearchValue] = useState("")
+    const [openModal, setOpenModal] = useState(false)
  
     const completedTasks = tasks.filter(todo => todo.completed).length
     const totalTasks = tasks.length
@@ -74,6 +76,8 @@ export const TaskProvider = (props) => {
             searchedTasks,
             completeTask,
             deleteTask,
+            openModal,
+            setOpenModal,
             addTask
         }}>
             {props.children}

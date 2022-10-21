@@ -5,11 +5,14 @@ import { useContext } from "react"
 import { TaskContext } from "../todoContext"
 
 //components
-import { CreateTodoButton } from "../components/CreateTodoButton/CreateTodoButton"
 import { TodoCounter } from "../components/TodoCounter/TodoCounter"
-import { TodoItem } from "../components/TodoItem/TodoItem"
-import { TodoList } from "../components/TodoList/TodoList"
 import { TodoSearch } from "../components/TodoSearch/TodoSearch"
+import { TodoList } from "../components/TodoList/TodoList"
+import { TodoItem } from "../components/TodoItem/TodoItem"
+import { CreateTodoButton } from "../components/CreateTodoButton/CreateTodoButton"
+import { Modal } from "../components/Modal/Modal"
+import { TodoForm } from "../components/TodoForm/TodoForm"
+
 
 
 export const AppUI = () => {
@@ -18,6 +21,8 @@ export const AppUI = () => {
         searchedTasks,
         completeTask,
         deleteTask,
+        openModal,
+        setOpenModal,
         addTask
     } = useContext(TaskContext)
     return (
@@ -25,8 +30,8 @@ export const AppUI = () => {
             <TodoCounter/>   
             <TodoSearch/>    
             <TodoList>
-                {error && <p>Desesperate hubo un error</p>}
-                {loading && <p className="font-bold text-gray-600 lg:text-xl">Estamos cargando, no desesperes...</p>}
+                {error && <p>There was an error, try again!</p>}
+                {loading && <p className="font-bold text-gray-600 lg:text-xl">Loading your tasks...</p>}
                 {(!loading && !searchedTasks.length) && <p className="font-bold text-gray-600 lg:text-xl">Create your first task!</p>}
                 {searchedTasks.map(task => {
                     return <TodoItem 
@@ -39,8 +44,19 @@ export const AppUI = () => {
                 })
                 }
             </TodoList> 
+
+            {openModal && (
+                <Modal>
+                    <TodoForm 
+                    setOpenModal = {setOpenModal}
+                    addTask = {addTask}
+                    ></TodoForm>
+                </Modal>
+            )}
+
             <CreateTodoButton
-            addTask={(taskName) => addTask(taskName)}
+            openModal = {openModal}
+            setOpenModal = {setOpenModal}
             />
         </main>
     )

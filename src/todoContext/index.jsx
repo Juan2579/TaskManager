@@ -69,6 +69,7 @@ export const TaskProvider = (props) => {
         <TaskContext.Provider value={{
             error,
             loading,
+            tasks,
             totalTasks,
             completedTasks,
             searchValue,

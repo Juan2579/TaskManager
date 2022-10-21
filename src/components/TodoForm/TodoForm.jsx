@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const TodoForm = ({addTask, setOpenModal}) => {
+export const TodoForm = ({addTask, setOpenModal, tasks}) => {
 
     const [newTaskValue, setNewTaskValue] = useState("")
 
@@ -9,7 +9,11 @@ export const TodoForm = ({addTask, setOpenModal}) => {
     }
     const onSubmit = (event) => {
         event.preventDefault();
-        if(!newTaskValue == ""){
+        if(!newTaskValue == "" && !tasks.some(task => {
+            const storageTaskComparation = task.name.toLowerCase()
+            const newTaskComparison = newTaskValue.toLowerCase()
+            return storageTaskComparation === newTaskComparison
+        })){
             addTask(newTaskValue)
             setOpenModal(false)
         }

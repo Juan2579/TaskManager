@@ -20,6 +20,7 @@ export const AppUI = () => {
         loading,
         searchedTasks,
         completeTask,
+        tasks,
         deleteTask,
         openModal,
         setOpenModal,
@@ -48,6 +49,7 @@ export const AppUI = () => {
             {openModal && (
                 <Modal>
                     <TodoForm 
+                    tasks = {tasks}
                     setOpenModal = {setOpenModal}
                     addTask = {addTask}
                     ></TodoForm>

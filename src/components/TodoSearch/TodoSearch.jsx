@@ -9,8 +9,8 @@ export const TodoSearch = () => {
     setSearchValue(event.target.value)
   }
   return (
-    <section className="pb-14">
-        <input className="w-56 h-10 pl-4 outline-none rounded-2xl shadow-lg lg:w-80 lg:h-12" type="text" placeholder="Search task..."
+    <section className="pb-10">
+        <input className="w-56 h-10 pl-4 rounded-2xl shadow-lg outline-2 outline-[#90D2DD] lg:w-80 lg:h-12" type="text" placeholder="Search task..."
         value={searchValue}
         onChange={onSearchValueChange} />
     </section>

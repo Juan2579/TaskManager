@@ -9,7 +9,7 @@ export const CreateTodoButton = ({setOpenModal, openModal}) => {
     }
 }
   return (
-    <button type="button" className="w-16 bg-teal-100 rounded-full fixed bottom-5 right-5 shadow-lg z-10"
+    <button type="button" className="w-16 bg-teal-100 rounded-full fixed bottom-5 right-5 shadow-lg z-10 duration-500 hover:rotate-45 lg:right-56"
     onClick={createTask}
     >
       <svg className="w-16 fill-current text-sky-500" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">

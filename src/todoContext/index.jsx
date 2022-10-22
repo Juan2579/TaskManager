@@ -13,6 +13,9 @@ export const TaskProvider = (props) => {
 
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
+    const [all, setAll] = useState(true)
+    const [completed, setCompleted] = useState(false)
+    const [uncompleted, setUncompleted] = useState(false)
  
     const completedTasks = tasks.filter(todo => todo.completed).length
     const totalTasks = tasks.length
@@ -65,6 +68,7 @@ export const TaskProvider = (props) => {
 
     }
 
+    
     return (
         <TaskContext.Provider value={{
             error,
@@ -79,7 +83,13 @@ export const TaskProvider = (props) => {
             deleteTask,
             openModal,
             setOpenModal,
-            addTask
+            addTask,
+            all,
+            setAll,
+            completed,
+            setCompleted,
+            uncompleted,
+            setUncompleted
         }}>
             {props.children}
         </TaskContext.Provider>

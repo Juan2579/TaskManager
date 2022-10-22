@@ -1,4 +1,7 @@
-export const TodoEmpty = () => {
+export const TodoEmpty = ({setAll, setCompleted, setUncompleted}) => {
+  setAll(true)
+  setCompleted(false)
+  setUncompleted(false)
   return (
     <div className="flex flex-col justify-center items-center gap-5">
         <h3 className="font-bold text-gray-600 lg:text-xl">You have not created tasks</h3>

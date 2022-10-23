@@ -12,17 +12,17 @@ export const TodoList = ({tasks, children, loading, searchedTasks, all, setAll, 
                 setAll(true)
                 setCompleted(false)
                 setUncompleted(false)
-            }} className={`min-w-[90px] max-w-[120px] h-[35px] rounded-lg px-3 py-2 text-[#365b7a] font-medium text-sm bg-cyan-100 ${all && 'bg-blue-800 text-white pointer-events-none'} border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[200px] lg:h-[45px] lg:text-xl`}>All</button>
+            }} className={`min-w-[90px] max-w-[120px] h-[35px] rounded-lg px-3 py-2 text-[#365b7a] font-medium text-sm bg-cyan-100 ${all ? 'bg-blue-800 text-white pointer-events-none dark:bg-[#00082E]' : 'dark:bg-[#0865b6]'} border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[200px] lg:h-[45px] lg:text-xl dark:text-white dark:hover:bg-[#00082E]`}>All</button>
             <button onClick={() => {
                 setAll(false)
                 setCompleted(true)
                 setUncompleted(false)
-            }} className={`min-w-[90px] max-w-[120px] h-[35px] rounded-lg px-3 py-2 text-[#365b7a] font-medium text-sm bg-cyan-100 ${completed && 'bg-blue-800 text-white pointer-events-none'} border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[200px] lg:h-[45px] lg:text-xl`}>Completed</button>
+            }} className={`min-w-[90px] max-w-[120px] h-[35px] rounded-lg px-3 py-2 text-[#365b7a] font-medium text-sm bg-cyan-100 ${completed ? 'bg-blue-800 text-white pointer-events-none dark:bg-[#00082E]' : 'dark:bg-[#0865b6]'} border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[200px] lg:h-[45px] lg:text-xl dark:text-white dark:hover:bg-[#00082E]`}>Completed</button>
             <button onClick={() => {
                 setAll(false)
                 setCompleted(false)
                 setUncompleted(true)
-            }}  className={`min-w-[90px] max-w-[120px] h-[35px] rounded-lg px-2 py-2 text-[#365b7a] font-medium text-sm bg-cyan-100 ${uncompleted && 'bg-blue-800 text-white pointer-events-none'} border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[200px] lg:h-[45px] lg:text-xl`}>Uncompleted</button>
+            }}  className={`min-w-[90px] max-w-[120px] h-[35px] rounded-lg px-2 py-2 text-[#365b7a] font-medium text-sm bg-cyan-100 ${uncompleted ? 'bg-blue-800 text-white pointer-events-none dark:bg-[#00082E]' : 'dark:bg-[#0865b6]'} border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[200px] lg:h-[45px] lg:text-xl dark:text-white dark:hover:bg-[#00082E]`}>Uncompleted</button>
             </div> 
            : null
         }

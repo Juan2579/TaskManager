@@ -25,9 +25,9 @@ export const TodoForm = ({addTask, setOpenModal, tasks}) => {
         <form
             onSubmit={onSubmit} 
             style={{boxShadow: "0 8px 32px 0 rgb(31 38 135 / 37%"}} 
-            className="min-w-[288px] min-h-[400px] flex flex-col items-center gap-5 fixed px-5 py-8 shadow-xl rounded-lg bg-[#90D2DD] border-2 border-white z-10 backdrop-blur-sm lg:min-w-[500px] lg:gap-12 lg:py-12">
+            className="min-w-[288px] min-h-[400px] flex flex-col items-center gap-5 fixed px-5 py-8 shadow-xl rounded-lg bg-[#90D2DD] border-2 border-white z-10 backdrop-blur-sm lg:min-w-[500px] lg:gap-12 lg:py-12 dark:bg-[#002B60]">
             <h2 
-                className="text-transparent bg-clip-text text-2xl font-bold bg-gradient-to-r from-[#27566c] to-[#676bc3] lg:text-4xl">
+                className="text-transparent bg-clip-text text-2xl font-bold bg-gradient-to-r from-[#27566c] to-[#676bc3] lg:text-4xl dark:from-[#ffffff] dark:to-[#9fcde3]">
                 Create a New Task!
             </h2>
             <svg className="w-56 lg:w-64" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1005.56255 548.69495"><path d="M970.1131,720.7499c.096-.28809,9.41382-29.11865-7.07739-54.84473l-1.6836,1.0791c15.96338,24.90332,6.9563,52.8545,6.86353,53.13379Z" transform="translate(-97.21873 -175.65252)" fill="#e4e4e4"/><path d="M951.24342,669.60483a13.11313,13.11313,0,1,0,25.66181-5.41187c-1.49445-7.08631-14.16421-24.72239-21.25053-23.22794S949.749,662.51852,951.24342,669.60483Z" transform="translate(-97.21873 -175.65252)" fill="#e4e4e4"/><path d="M953.63276,702.748c6.32428,6.83412,17.63826,6.64871,17.63826,6.64871s1.06029-11.26571-5.264-18.09983-17.63825-6.64871-17.63825-6.64871S947.30848,695.91386,953.63276,702.748Z" transform="translate(-97.21873 -175.65252)" fill="#e4e4e4"/>
@@ -36,17 +36,19 @@ export const TodoForm = ({addTask, setOpenModal, tasks}) => {
             <input
                 value={newTaskValue}
                 onChange={onChange} 
-                className="w-56 h-10 pl-4 rounded-2xl shadow-lg outline-2 outline-gray-300 lg:w-64 lg:h-12" placeholder="Task name..." type="text" />
+                className="w-56 h-10 pl-4 rounded-2xl shadow-lg outline-2 outline-gray-300 lg:w-64 lg:h-12 dark:bg-[#004C8F] dark:outline-white dark:border-white dark:border-2 dark:placeholder:text-gray-300 dark:text-white" placeholder="Task name..." type="text" />
             <button 
                 type="submit" 
-                className="min-w-[190px] max-w-[260px] h-[55px] rounded-lg px-5 py-2 text-[#365b7a] font-medium text-lg bg-cyan-100 border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[290px] lg:text-xl">
+                className="min-w-[190px] max-w-[260px] h-[55px] rounded-lg px-5 py-2 text-[#365b7a] font-medium text-lg bg-cyan-100 border-2 border-white shadow-lg duration-500 hover:bg-blue-800 hover:text-white lg:min-w-[290px] lg:text-xl dark:bg-[#0865b6] dark:text-white dark:hover:bg-[#00082E]">
                 Add Task
             </button>
             <button
                 onClick={onCancel} 
                 type="button" 
-                className="w-10 h-10 absolute bottom-5 right-3 bg-teal-100 rounded-full shadow-lg text-2xl font-bold text-sky-500 hover:scale-[1.2] hover:opacity-70">
-                X
+                className="w-10 h-10 absolute bottom-5 right-3 bg-teal-100 rounded-full shadow-lg text-2xl font-bold text-sky-500 hover:scale-[1.2] hover:opacity-70 dark:bg-[#0865b6]">
+                    <svg className="w-10 fill-current text-sky-500 transform rotate-45 dark:text-white" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M381,236H276V131c0-11-9-20-20-20s-20,9-20,20v105H131c-11,0-20,9-20,20s9,20,20,20h105v105c0,11,9,20,20,20  s20-9,20-20V276h105c11,0,20-9,20-20S392,236,381,236z"/>
+                    </svg>
             </button>
         </form>
     )

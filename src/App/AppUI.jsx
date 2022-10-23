@@ -34,7 +34,7 @@ export const AppUI = () => {
         setUncompleted
     } = useContext(TaskContext)
     return (
-        <main className="w-full h-auto flex flex-col items-center pt-8 pb-32  bg-gradient-to-r from-[#74ebd5] to-[#acb6e5]">
+        <main className="w-full h-auto flex flex-col items-center pt-8 pb-32  bg-gradient-to-r from-[#74ebd5] to-[#acb6e5] dark:from-[#000428] dark:to-[#004e92]">
 
             <TodoCounter tasks={tasks}/>   
             {!!tasks.length  && <TodoSearch/>}
@@ -76,7 +76,7 @@ export const AppUI = () => {
                   }) : null  
                 }
                 {
-                  completed && searchedTasks.filter(task => task.completed).length < 1 ? <p className="font-bold text-gray-600 lg:text-xl">You have not completed tasks yet</p> : null
+                  completed && searchedTasks.filter(task => task.completed).length < 1 ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not completed tasks yet</p> : null
                 }
                 {
                   uncompleted ? searchedTasks.filter(task => !task.completed).map(task => {
@@ -90,7 +90,7 @@ export const AppUI = () => {
                   }) : null
                 }
                 {
-                  uncompleted && !searchedTasks.filter(task => !task.completed).length ? <p className="font-bold text-gray-600 lg:text-xl">You have not uncompleted tasks</p> : null
+                  uncompleted && !searchedTasks.filter(task => !task.completed).length ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not uncompleted tasks</p> : null
                 }
             </TodoList> 
 

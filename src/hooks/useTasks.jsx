@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { createContext } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useLocalStorage } from "./useLocalStorage";
 
-export const TaskContext = createContext()
-
-export const TaskProvider = (props) => {
+export const useTasks = () => {
     const {item: tasks,
         saveItem: saveTasks,
         loading,
@@ -69,8 +66,7 @@ export const TaskProvider = (props) => {
     }
 
     
-    return (
-        <TaskContext.Provider value={{
+    return {
             error,
             loading,
             tasks,
@@ -90,8 +86,5 @@ export const TaskProvider = (props) => {
             setCompleted,
             uncompleted,
             setUncompleted
-        }}>
-            {props.children}
-        </TaskContext.Provider>
-    )
+    }
 }

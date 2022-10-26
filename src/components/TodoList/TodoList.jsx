@@ -1,7 +1,60 @@
-export const TodoList = ({tasks, children, loading, searchedTasks, all, setAll, completed, setCompleted, uncompleted, setUncompleted}) => {
+export const TodoList = ({
+    //props
+    error,
+    loading, 
+    tasks,
+    children, 
+    searchedTasks, 
+    all, 
+    setAll, 
+    completed, 
+    setCompleted, 
+    uncompleted, 
+    setUncompleted,
+
+    //render props
+    onError,
+    onLoading,
+    onEmptyTodos,
+    render
+}) => {
+
+    
     return (
     <section className="flex flex-col justify-center items-center gap-6">
+
+        {/* Onloads states */}
+
+        {error && onError()}
+        {loading && onLoading()}
+        {(!loading && !searchedTasks.length) && onEmptyTodos()}
+
+        
+
+        {/*Empty Completed tasks renderings */}
+        
+        {
+            completed && searchedTasks.filter(task => task.completed).length < 1 ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not completed tasks yet</p> : null
+        }
+
+        {/*Empty Uncompleted tasks renderings */}
+        
+        {
+            uncompleted && !searchedTasks.filter(task => !task.completed).length ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not uncompleted tasks</p> : null
+        }
+
         <ul className={`flex flex-col justify-center items-center gap-4 ${tasks.length > 1 && 'lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:place-items-center'} lg:gap-8`}>
+            {/* Rendering */}
+
+            {
+                all && searchedTasks.map(render)
+            }
+            {
+                completed && searchedTasks.filter(task => task.completed).map(render)
+            }
+            {
+                uncompleted && searchedTasks.filter(task => !task.completed).map(render)
+            }
             {children}
             
         </ul>

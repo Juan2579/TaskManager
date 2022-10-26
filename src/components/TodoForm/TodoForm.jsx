@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const TodoForm = ({addTask, setOpenModal, tasks}) => {
+export const TodoForm = ({addTask, setOpenModal, tasks, setAll, setCompleted, setUncompleted}) => {
 
     const [newTaskValue, setNewTaskValue] = useState("")
 
@@ -16,6 +16,9 @@ export const TodoForm = ({addTask, setOpenModal, tasks}) => {
         })){
             addTask(newTaskValue)
             setOpenModal(false)
+            setAll(true)
+            setCompleted(false)
+            setUncompleted(false)
         }
     }
     const onCancel = () => {

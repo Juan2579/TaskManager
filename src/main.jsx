@@ -1,11 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { App } from './App'
+import { App } from './App/App'
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import './index.css'
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,16 +14,3 @@ root.render(
   </React.StrictMode>
 );
 
-if ('serviceWorker' in navigator) {
-  // Register a service worker hosted at the root of the
-  // site using the default scope.
-  navigator.serviceWorker.register(
-    new URL('/src/sw.js', import.meta.url),{type: 'module'})
-      .then(function(registration) {
-        console.log('Service worker registration succeeded:', registration);
-      }).catch(function(error) {
-        console.log('Service worker registration failed:', error);
-      });
-} else {
-  console.log('Service workers are not supported.');
-}

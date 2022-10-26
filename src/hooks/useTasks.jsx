@@ -6,7 +6,7 @@ export const useTasks = () => {
         saveItem: saveTasks,
         loading,
         error
-    } = useLocalStorage("TASKS_V1", [])
+    } = useLocalStorage("TASKS_V1", [], 2000)
 
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)

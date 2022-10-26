@@ -47,7 +47,7 @@ return (
 
       <TodoHeader>
         <TodoCounter totalTasks={totalTasks} completedTasks={completedTasks} tasks={tasks}/> 
-        {!!tasks?.length  && <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}  />}
+        {!!tasks.length  && <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}  />}
       </TodoHeader>  
       
       <TodoList 

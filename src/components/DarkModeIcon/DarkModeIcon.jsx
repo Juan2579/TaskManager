@@ -1,20 +1,24 @@
 import { useState } from "react"
+import { useLocalStorage } from "../../hooks/useLocalStorage"
 export const DarkModeIcon = () => {
   const app = document.querySelector("html")  
-  const [dark, setDark ] = useState(false)
 
+  const {item: dark, saveItem} = useLocalStorage("DarkMode", false, 0)
  
-  const toggleDarkMode = () => {
-    app.classList.toggle("dark")
-
-    if(!dark){
-        const darkMode = app.classList.contains("dark")
-        setDark(darkMode)
-      }else{
-        const darkMode = app.classList.contains("dark")
-        setDark(darkMode)
-      }
-  }
+  const toggleDarkMode = () => { 
+       app.classList.toggle("dark")
+       if(dark === true){
+        saveItem(false)
+       }else{
+        saveItem(true)
+       }
+    }
+  
+    if(dark === true){
+        app.classList.add("dark")
+    }else if(dark === false){
+        app.classList.remove("dark")
+    }
   return (
     <button className="pr-5" onClick={toggleDarkMode}>
         {

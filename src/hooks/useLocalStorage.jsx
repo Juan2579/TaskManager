@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const useLocalStorage = (itemName, initialValue) => {
+export const useLocalStorage = (itemName, initialValue, time) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [item, setItem] = useState(initialValue)  
@@ -24,7 +24,7 @@ export const useLocalStorage = (itemName, initialValue) => {
         } catch (error) {
         setError(error)
         }
-    }, 2000)
+    }, time)
   }, []);
       
    

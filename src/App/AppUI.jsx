@@ -5,6 +5,7 @@ import { useContext } from "react"
 import { TaskContext } from "../todoContext"
 
 //components
+import { TodoHeader } from "../components/TodoHeader/TodoHeader"
 import { TodoCounter } from "../components/TodoCounter/TodoCounter"
 import { TodoSearch } from "../components/TodoSearch/TodoSearch"
 import { TodoList } from "../components/TodoList/TodoList"
@@ -17,27 +18,40 @@ import { TodoLoading } from "../components/TodoLoading/TodoLoading"
 
 
 export const AppUI = () => {
-    const {error,
+    const {
+        error,
         loading,
+
         searchedTasks,
         completeTask,
         tasks,
         deleteTask,
+
         openModal,
         setOpenModal,
         addTask,
+
         all,
         setAll,
         completed,
         setCompleted,
         uncompleted,
-        setUncompleted
+        setUncompleted,
+
+        totalTasks,
+        completedTasks,
+
+        searchValue, 
+        setSearchValue
     } = useContext(TaskContext)
     return (
         <main className="w-full h-auto flex flex-col items-center pt-8 pb-32  bg-gradient-to-r from-[#74ebd5] to-[#acb6e5] dark:from-[#000428] dark:to-[#004e92]">
 
-            <TodoCounter tasks={tasks}/>   
-            {!!tasks.length  && <TodoSearch/>}
+            <TodoHeader>
+              <TodoCounter totalTasks={totalTasks} completedTasks={completedTasks} tasks={tasks}/> 
+              {!!tasks.length  && <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}  />}
+            </TodoHeader>  
+            
             
             <TodoList 
                 searchedTasks={searchedTasks} 
@@ -53,7 +67,7 @@ export const AppUI = () => {
 
                 {error ? <p>There was an error, try again!</p> : null}
                 {loading ? <TodoLoading /> : null}
-                {!loading && !searchedTasks.length ?  <TodoEmpty setAll={setAll} setCompleted={setCompleted} setUncompleted={setUncompleted}  /> : null}
+                {!loading && !searchedTasks.length ?  <TodoEmpty setAll={setAll} setCompleted={setCompleted} setUncompleted={setUncompleted} searchValue={searchValue}  searchedTasks={searchedTasks} /> : null}
                 {all ? searchedTasks.map(task => {
                     return <TodoItem 
                     key={task.name} 

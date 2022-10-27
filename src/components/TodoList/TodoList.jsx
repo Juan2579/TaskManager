@@ -54,9 +54,7 @@ export const TodoList = ({
             }
             {
                 uncompleted && searchedTasks.filter(task => !task.completed).map(render)
-            }
-            {children}
-            
+            }         
         </ul>
         {
           !loading && searchedTasks.length >= 1 ? 

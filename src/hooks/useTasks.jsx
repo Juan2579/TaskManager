@@ -4,6 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 export const useTasks = () => {
     const {item: tasks,
         saveItem: saveTasks,
+        sincronizeItem: sincronizeTasks,
         loading,
         error
     } = useLocalStorage("TASKS_V1", [], 2000)
@@ -85,6 +86,7 @@ export const useTasks = () => {
             completed,
             setCompleted,
             uncompleted,
-            setUncompleted
+            setUncompleted,
+            sincronizeTasks
     }
 }

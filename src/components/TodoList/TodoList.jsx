@@ -3,7 +3,6 @@ export const TodoList = ({
     error,
     loading, 
     tasks,
-    children, 
     searchedTasks, 
     all, 
     setAll, 
@@ -34,26 +33,26 @@ export const TodoList = ({
         {/*Empty Completed tasks renderings */}
         
         {
-            completed && searchedTasks.filter(task => task.completed).length < 1 ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not completed tasks yet</p> : null
+            (!loading && completed) && searchedTasks.filter(task => task.completed).length < 1 ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not completed tasks yet</p> : null
         }
 
         {/*Empty Uncompleted tasks renderings */}
         
         {
-            uncompleted && !searchedTasks.filter(task => !task.completed).length ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not uncompleted tasks</p> : null
+            (loading && uncompleted) && !searchedTasks.filter(task => !task.completed).length ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not uncompleted tasks</p> : null
         }
 
         <ul className={`flex flex-col justify-center items-center gap-4 ${tasks.length > 1 && 'lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:place-items-center'} lg:gap-8`}>
             {/* Rendering */}
 
             {
-                all && searchedTasks.map(render)
+                (all && !loading) && searchedTasks.map(render)
             }
             {
-                completed && searchedTasks.filter(task => task.completed).map(render)
+                (completed && !loading) && searchedTasks.filter(task => task.completed).map(render)
             }
             {
-                uncompleted && searchedTasks.filter(task => !task.completed).map(render)
+                (uncompleted && !loading) && searchedTasks.filter(task => !task.completed).map(render)
             }         
         </ul>
         {

@@ -12,6 +12,7 @@ import { Modal } from "../components/Modal/Modal"
 import { TodoForm } from "../components/TodoForm/TodoForm"
 import { TodoEmpty } from "../components/TodoEmpty/TodoEmpty"
 import { TodoLoading } from "../components/TodoLoading/TodoLoading"
+import { ChangeAlert } from "../components/ChangeAlert/ChangeAlert"
 
 export const App = () => {
 
@@ -39,15 +40,17 @@ export const App = () => {
     completedTasks,
 
     searchValue, 
-    setSearchValue
+    setSearchValue,
+
+    sincronizeTasks
 } = useTasks()
 
 return (
   <main className="w-full h-auto flex flex-col items-center pt-8 pb-32  bg-gradient-to-r from-[#74ebd5] to-[#acb6e5] lg:pb-40 dark:from-[#000428] dark:to-[#004e92]">
 
       <TodoHeader>
-        <TodoCounter totalTasks={totalTasks} completedTasks={completedTasks} tasks={tasks}/> 
-        {!!tasks.length  && <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}  />}
+        <TodoCounter loading={loading} totalTasks={totalTasks} completedTasks={completedTasks} tasks={tasks}/> 
+        {!!tasks.length  && <TodoSearch loading={loading} searchValue={searchValue} setSearchValue={setSearchValue}  />}
       </TodoHeader>  
       
       <TodoList 
@@ -98,9 +101,10 @@ return (
       openModal = {openModal}
       setOpenModal = {setOpenModal}
       />
+
+      <ChangeAlert 
+        sincronize={sincronizeTasks}
+      />
   </main>
 )
 }
-
-
-

@@ -28,8 +28,6 @@ export const TodoList = ({
         {loading && onLoading()}
         {(!loading && !searchedTasks.length) && onEmptyTodos()}
 
-        
-
         {/*Empty Completed tasks renderings */}
         
         {
@@ -39,8 +37,8 @@ export const TodoList = ({
         {/*Empty Uncompleted tasks renderings */}
         
         {
-            (loading && uncompleted) && !searchedTasks.filter(task => !task.completed).length ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not uncompleted tasks</p> : null
-        }
+            (!loading && uncompleted) && !searchedTasks.filter(task => !task.completed).length ? <p className="font-bold text-gray-600 lg:text-xl dark:text-gray-300">You have not uncompleted tasks</p> : null
+        }   
 
         <ul className={`flex flex-col justify-center items-center gap-4 ${tasks.length > 1 && 'lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:place-items-center'} lg:gap-8`}>
             {/* Rendering */}
@@ -53,7 +51,7 @@ export const TodoList = ({
             }
             {
                 (uncompleted && !loading) && searchedTasks.filter(task => !task.completed).map(render)
-            }         
+            }      
         </ul>
         {
           !loading && searchedTasks.length >= 1 ? 

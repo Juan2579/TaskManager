@@ -1,6 +1,3 @@
-import { useContext } from "react"
-
-
 export const TodoCounter = ({totalTasks, completedTasks, loading }) => {
   return (
     <section className="flex flex-col items-center justify-center gap-2 pb-5">

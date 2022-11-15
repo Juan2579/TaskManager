@@ -1,3 +1,4 @@
+import { info } from "autoprefixer";
 import { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
@@ -7,7 +8,7 @@ export const useTasks = () => {
         sincronizeItem: sincronizeTasks,
         loading,
         error
-    } = useLocalStorage("TASKS_V1", [], 2000)
+    } = useLocalStorage("TASKS_V2", [], 2000)
 
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
@@ -29,8 +30,8 @@ export const useTasks = () => {
         return taskText.includes(searchText)
     })}
 
-    const completeTask = (name) => {
-        const taskIndex = tasks.findIndex(task => task.name == name)
+    const completeTask = (id) => {
+        const taskIndex = tasks.findIndex(task => task.id == id)
 
         const newTasks = [...tasks]
    
@@ -43,8 +44,8 @@ export const useTasks = () => {
         saveTasks(newTasks)
     }
 
-    const deleteTask = (name) => {
-        const taskIndex = tasks.findIndex(task => task.name == name)
+    const deleteTask = (id) => {
+        const taskIndex = tasks.findIndex(task => task.id == id)
 
         const newTasks = [...tasks]
         newTasks.splice(taskIndex, 1)
@@ -59,28 +60,33 @@ export const useTasks = () => {
             const newTaskComparison = taskName.toLowerCase()
             return storageTaskComparation === newTaskComparison
         })){
+            const id = newTaskId(tasks)
             const newTasks = [...tasks]
-            newTasks.push({name: taskName, completed: false})
+            newTasks.push({name: taskName, completed: false, id})
             saveTasks(newTasks)
         }
 
     }
 
-    
     return {
             error,
             loading,
+
             tasks,
             totalTasks,
             completedTasks,
+
             searchValue,
             setSearchValue,
             searchedTasks,
+
             completeTask,
             deleteTask,
+            addTask,
+
             openModal,
             setOpenModal,
-            addTask,
+
             all,
             setAll,
             completed,
@@ -89,4 +95,13 @@ export const useTasks = () => {
             setUncompleted,
             sincronizeTasks
     }
+}
+
+const newTaskId = (taskList) => {
+    if(!taskList.length){
+        return 1;
+    }
+    const idList = taskList.map(task => task.id)
+    const idMax = Math.max(...idList)
+    return idMax + 1
 }

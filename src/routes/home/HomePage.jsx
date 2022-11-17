@@ -1,5 +1,6 @@
 //hooks
 import { useTasks } from "../../hooks/useTasks"
+import { useNavigate } from "react-router-dom"
 
 //components
 import { TodoHeader } from "../../components/TodoHeader/TodoHeader"
@@ -15,6 +16,8 @@ import { TodoLoading } from "../../components/TodoLoading/TodoLoading"
 import { ChangeAlert } from "../../components/ChangeAlert/ChangeAlert"
 
 export const HomePage = () => {
+
+  const navigate = useNavigate()
 
   const {
     error,
@@ -79,6 +82,17 @@ return (
           completed={task.completed}
           onComplete={() => completeTask(task.id)}
           onDelete={() => deleteTask(task.id)}
+          onEdit={() => {
+            navigate(
+              "/edit/" + task.id,
+              {
+                state: {task}
+              }
+              
+            
+            )
+          
+          }}
           />
         }}
       />

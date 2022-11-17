@@ -31,15 +31,24 @@ export const useTasks = () => {
     })}
 
     const completeTask = (id) => {
-        const taskIndex = tasks.findIndex(task => task.id == id)
+        const taskIndex = tasks.findIndex(task => task.id === id)
 
         const newTasks = [...tasks]
    
-        if(newTasks[taskIndex].completed === false){
+        if(!newTasks[taskIndex].completed){
             newTasks[taskIndex].completed = true
         }else{
             newTasks[taskIndex].completed = false
         }
+
+        saveTasks(newTasks)
+    }
+    const editTask = (id, newText) => {
+        const taskIndex = tasks.findIndex(task => task.id === id)
+
+        const newTasks = [...tasks]
+
+        newTasks[taskIndex].name = newText
 
         saveTasks(newTasks)
     }
@@ -65,9 +74,11 @@ export const useTasks = () => {
             newTasks.push({name: taskName, completed: false, id})
             saveTasks(newTasks)
         }
-
     }
-
+    const getTask = (id) => {
+        const taskIndex = tasks.findIndex(task => task.id === id)
+        return tasks[taskIndex]
+    }
     return {
             error,
             loading,
@@ -83,6 +94,8 @@ export const useTasks = () => {
             completeTask,
             deleteTask,
             addTask,
+            editTask,
+            getTask,
 
             openModal,
             setOpenModal,

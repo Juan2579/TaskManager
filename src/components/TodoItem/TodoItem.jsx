@@ -9,7 +9,7 @@ export const TodoItem = (props) => {
         </button>
         <p className={`px-5 text-ellipsis whitespace-nowrap overflow-hidden ${props.completed && 'line-through'} lg:text-xl dark:text-white`}>{props.name}</p>
         <div className="flex">
-          <button className="pr-3">
+          <button onClick={props.onEdit} className="pr-3">
             <svg className="fill-current text-gray-900 w-5 h-5  hover:scale-[1.2] hover:opacity-70 lg:w-9 lg:h-9 dark:text-white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" >
               <g>
 	              <g>
